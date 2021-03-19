@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+<body>
+ 
+
+<div class="container"  id="c1">
+    <h1 style="text-align: center; font-family:Advent Pro; color: cornflowerblue;">Sayı Tahmin Oyunu (1-10 arasında)</h1>
+
+<img src="129-wear-mask.png"  id="resim">  
+<br>
+<button class="btn btn-outline-dark shadow-lg" id="baslat">Başlat😎</button> 
+<br>
+<input class="shadow-sm" style="font-size: 25px;"type="text" id="txt" disabled placeholder="Sayı giriniz">
+
+
+
+<br> 
+<button class="btn btn-outline-success shadow-lg" id="tahmin" disabled>Tahmin et  😋</button>  
+
+<br>
+
+<div class="container" >
+    <h5 id="hak" class="shadow-lg bg-light"></h5>
+    <h3 id="msg">  </h3>
+    <h4 id="bilmesayisi"></h4>
+
+</div>
+
+
+</div>    
+
+
+
+
+<script>
+
+    
+
+var bilmesayisi=document.getElementById("bilmesayisi")
+var tahmin=document.querySelector("#tahmin")
+var message=document.getElementById("msg")
+var randomx
+var baslat=document.querySelector("#baslat")
+var haksayisi=document.getElementById("hak")
+var sayi,sayac,hak=3;
+var kullanicisayi=document.querySelector("#txt")
+var sayac2=0
+
+baslat.onclick=function(){
+tahmin.disabled=false;
+kullanicisayi.disabled=false;
+haksayisi.innerHTML=""
+randomx=Math.round(Math.random()*10)
+sayac=0
+message.innerHTML=""
+console.log(randomx)
+kullanicisayi.classList="shadow-lg text-success"
+}
+
+
+tahmin.onclick=function()
+{
+sayac++;    
+
+
+if(randomx==kullanicisayi.value){
+
+sayac2++
+message.innerHTML="kazandınız 😍 "
+message.style.color="green"
+tahmin.disabled=true
+baslat.textContent="Yeniden Oyna  👊"
+bilmesayisi.innerHTML="Puan: "+10*sayac2;
+}
+
+else if(kullanicisayi.value>randomx){
+    message.innerHTML="Daha küçük sayı girin"
+}
+
+else {
+    message.innerHTML="Daha büyük sayı girin"
+}
+
+if(randomx!=kullanicisayi.value && sayac>=hak)
+{
+    message.innerHTML=" "
+    haksayisi.innerHTML="Üzgünüz hakkınız bitti  😨 "
+    
+    tahmin.disabled=true
+    baslat.textContent="Yeniden Oyna  👊"
+    
+}
+
+}
+
+
+
+
+</script>
+
+</body>
+</html>
